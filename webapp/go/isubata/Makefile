@@ -15,4 +15,4 @@ build:
 	go build
 
 vet:
-	go vet ./isubata.go
+	go vet -vettool=`which goone` ./isubata.go

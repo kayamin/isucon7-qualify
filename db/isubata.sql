@@ -14,6 +14,8 @@ CREATE TABLE image (
   data LONGBLOB
 ) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- CREATE INDEX image_name_idx ON image (name);
+
 CREATE TABLE channel (
   id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   name TEXT NOT NULL,
@@ -30,6 +32,8 @@ CREATE TABLE message (
   created_at DATETIME NOT NULL
 ) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- CREATE INDEX channnel_id_idx ON message (channel_id);
+
 CREATE TABLE haveread (
   user_id BIGINT NOT NULL,
   channel_id BIGINT NOT NULL,
@@ -38,3 +42,6 @@ CREATE TABLE haveread (
   created_at DATETIME NOT NULL,
   PRIMARY KEY(user_id, channel_id)
 ) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE image ADD INDEX image_name_idx(name);
+ALTER TABLE message ADD INDEX channel_id_idx(channel_id);
