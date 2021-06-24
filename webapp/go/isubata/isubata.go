@@ -389,7 +389,7 @@ func getMessage(c echo.Context) error {
 
     // 配列のキャパシティを取得したメッセージ数で初期化
     // append の際にメモリ領域を再確保する必要がなくなるので高速になる
-	response := make([]map[string]interface{}, len(message))
+	response := make([]map[string]interface{}, 0, len(message))
 	for i := len(messages) - 1; i >= 0; i-- {
 		m := messages[i]
 		r, err := jsonifyMessage(m)
